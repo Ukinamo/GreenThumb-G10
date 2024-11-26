@@ -29,3 +29,4 @@ Route::middleware(['auth'])->group(function() {
     Route::put('/plant/{plant}', [PlantController::class, 'update'])->name('plants.update');
     Route::delete('/plant/{plant}', [PlantController::class, 'destroy'])->name('plants.destroy');
 });
+

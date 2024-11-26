@@ -10,16 +10,9 @@ class PlantController extends Controller
 {
     public function index()
     {
+        $plants = Plant::where('user_id', Auth::id())->first();
         $plants = Auth::user()->plants;
-
-    // Check if the plants variable is null or empty
-        if ($plants === null || $plants->isEmpty()) {
-        // If the plants variable is null or empty, return an empty array
-        return view('plants.index', ['plants' => []]);
-    }
-
-    // If the plants variable is not null and not empty, pass it to the view
-         return view('plants.index', compact('plants'));
+        return view('plants.index', compact('plants'));
     }
 
     public function create()
@@ -28,32 +21,33 @@ class PlantController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
-            'care_instructions' => 'required|string',
-            'image' => 'nullable|image',
-        ]);
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'type' => 'required|string|max:255',
+        'care_instructions' => 'required|string',
+        'image' => 'nullable|image',
+    ]);
 
-        $plant = new Plant($request->all());
-        $plant->user_id = Auth::id();
-        if ($request->hasFile('image')) {
-            $plant->image = $request->file('image')->store('plants');
-        }
-        $plant->save();
-
-        return redirect()->route('plants.index')->with('success', 'Plant added successfully!');
+    $plant = new Plant($request->all());
+    $plant->user_id = Auth::id();
+    if ($request->hasFile('image')) {
+        $plant->image = $request->file('image')->store('plants');
     }
+    $plant->save();
+
+    return redirect()->route('plants.index')->with('success', 'Plant added successfully!');
+}
 
     public function show(Plant $plant)
     {
-        $profile = Plant::where('user_id', Auth::id())->first();
+        $plants = Plant::where('user_id', Auth::id())->first();
         return view('plants.show', compact('plant'));
     }
 
     public function edit(Plant $plant)
     {
+        $plants = Plant::where('user_id', Auth::id())->first();
         return view('plants.edit', compact('plant'));
     }
 

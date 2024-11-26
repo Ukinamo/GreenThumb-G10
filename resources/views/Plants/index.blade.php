@@ -23,8 +23,8 @@
             <tbody>
                 @foreach ($plants as $plant)
                     <tr>
-                        <td>{{ $plants->name }}</td>
-                        <td>{{ $plants->type }}</td>
+                        <td>{{ $plant->name }}</td>
+                        <td>{{ $plant->type }}</td>
                         <td>
                             <a href="{{ route('plants.show', $plant->id) }}" class="btn btn-info">View</a>
                             <a href="{{ route('plants.edit', $plant->id) }}" class="btn btn-warning">Edit</a>

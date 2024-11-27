@@ -28,6 +28,12 @@
             </div>
 
             <div class="mb-3">
+                <label for="care_instructions">Care Instructions</label>
+                <input type="text" id="care_instructions" placeholder="Enter care instructions"
+                       value="{{ old('type', $plant->care_instructions) }}" required>
+            </div>
+            
+            <div class="mb-3">
                 <label for="image">Image</label>
                 <input type="file" id="image" name="image">
                 @if($plant->image)

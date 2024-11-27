@@ -35,7 +35,7 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li><a class="dropdown-item" href="{{ route('profile.show') }}">Profile</a></li>
                     <li><a class="dropdown-item" href="{{ route('plants.index') }}">Plants</a></li>
-                    <li><a class="dropdown-item" href="#">Another Option</a></li>
+                    <li><a class="dropdown-item" href="{{ route('journals.index') }}">Journals</a></li>
                     <li><a class="dropdown-item" href="#">More Options</a></li>
                     <li><a class="dropdown-item" href="#">Extra Option</a></li>
                     <li>

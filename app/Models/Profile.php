@@ -13,7 +13,12 @@ class Profile extends Model
         'user_id',
         'bio',
         'location',
-        'website',
+        'hobbies',
+        'favorite_books',
+        'favorite_movies',
+        'favorite_music',
+        'country',
+
     ];
 
     public function user()

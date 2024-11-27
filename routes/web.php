@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlantController;
+use App\Http\Controllers\JournalController;
 
 Route::get('/', function () {
     return view('auth.signup');
@@ -28,5 +29,15 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/plant/{plant}/edit', [PlantController::class, 'edit'])->name('plants.edit');
     Route::put('/plant/{plant}', [PlantController::class, 'update'])->name('plants.update');
     Route::delete('/plant/{plant}', [PlantController::class, 'destroy'])->name('plants.destroy');
+});
+
+Route::middleware(['auth'])->group(function() {
+    Route::get('/journal', [JournalController::class, 'index'])->name('journals.index');
+    Route::get('/journal/create', [JournalController::class, 'create'])->name('journals.create');
+    Route::post('/journal', [JournalController::class, 'store'])->name('journals.store');
+    Route::get('/journal/{journal}', [JournalController::class, 'show'])->name('journals.show');
+    Route::get('/journal/{journal}/edit', [JournalController::class, 'edit'])->name('journals.edit');
+    Route::post('/journal/{journal}', [JournalController::class, 'update'])->name('journals.update');
+    Route::delete('/journal/{journal}', [JournalController::class, 'destroy'])->name('journals.destroy');
 });
 

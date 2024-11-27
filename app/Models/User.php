@@ -22,11 +22,16 @@ class User extends Authenticatable
 
     public function profile()
     {
-        return $this->hasMany(Profile::class);
+        return $this->hasOne(Profile::class);
     }
 
     public function plants()
     {
         return $this->hasMany(Plant::class);
+    }
+
+    public function journals()
+    {
+        return $this->hasMany(Journal::class);
     }
 }

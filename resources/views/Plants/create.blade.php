@@ -29,6 +29,7 @@
             <input type="file" name="image" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Add Plant</button>
+        <a href="{{ route('plants.index') }}" class="btn btn-secondary">Back To Plant List</a>
     </form>
 </div>
 </body>

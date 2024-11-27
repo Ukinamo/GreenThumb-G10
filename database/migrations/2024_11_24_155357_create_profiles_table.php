@@ -16,7 +16,11 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('bio')->nullable();
             $table->string('location')->nullable();
-            $table->string('website')->nullable();
+            $table->text('hobbies')->nullable();
+            $table->text('favorite_books')->nullable();
+            $table->text('favorite_movies')->nullable();
+            $table->text('favorite_music')->nullable();
+            $table->string('country')->nullable(); 
             $table->timestamps();
         });
     }

@@ -16,7 +16,8 @@ class AuthController extends Controller
 
     public function showSignupForm()
     {
-        return view('auth.signup');
+        return view('auth.signup', [
+        ]);
     }
 
     public function login(Request $request)
@@ -30,7 +31,7 @@ class AuthController extends Controller
             return redirect()->route('dashboard');
         }
 
-        return back()->withErrors(['email' => 'Invalid credentials']);
+        return back()->withErrors(['email' => 'Invalid credentials'])->withInput();
     }
 
     public function signup(Request $request)
@@ -41,13 +42,21 @@ class AuthController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
 
-        return redirect()->route('login')->with('success', 'Registration successful. Please login.');
+            return redirect()->route('login')->with('success', 'Registration successful. Please login.');
+        } catch (\Illuminate\Database\QueryException $e) {
+            if ($e->getCode() == 23000) {
+                return back()->withErrors(['email' => 'Email already exists.'])->withInput();
+            } else {
+                throw $e;
+            }
+        }
     }
 
     public function dashboard()

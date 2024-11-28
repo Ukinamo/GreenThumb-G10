@@ -37,7 +37,7 @@
                 <label for="image">Image</label>
                 <input type="file" id="image" name="image">
                 @if($plant->image)
-                    <img src="{{ asset('storage/' . $plant->image) }}" alt="Current Image" width="100">
+                    <img src="{{ asset('image/' . $plant->image) }}" alt="Current Image" width="100">
                 @endif
             </div>
 

@@ -15,12 +15,6 @@
     @if($plant->image)
         <img src="{{ asset('storage/' . $plant->image) }}" alt="{{ $plant->name }}" class="img-fluid">
     @endif
-    <a href="{{ route('plants.edit', $plant->id) }}" class="btn btn-warning">Edit</a>
-    <form action="{{ route('plants.destroy', $plant->id) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">Delete</button>
-    </form>
     <a href="{{ route('plants.index') }}" class="btn btn-secondary">Back to Plants</a>
 </div>
 </body>

@@ -17,6 +17,14 @@ class Journal extends Model
         'visibility',
     ];
 
+    public function scopeVisible($query, $userId)
+    {
+        return $query->where(function ($query) use ($userId) {
+            $query->where('visibility', 'public')
+                  ->orWhere('user_id', $userId);
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

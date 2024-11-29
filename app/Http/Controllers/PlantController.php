@@ -10,8 +10,7 @@ class PlantController extends Controller
 {
     public function index()
     {
-        $plants = Plant::where('user_id', Auth::id())->first();
-        $plants = Auth::user()->plants;
+        $plants = Plant::where('user_id', Auth::id())->get();
         return view('plants.index', compact('plants'));
     }
 
@@ -21,33 +20,38 @@ class PlantController extends Controller
     }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'type' => 'required|string|max:255',
-        'care_instructions' => 'required|string',
-        'image' => 'nullable|image',
-    ]);
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'type' => 'required|string|max:255',
+            'care_instructions' => 'required|string',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:10048',
+        ]);
 
-    $plant = new Plant($request->all());
-    $plant->user_id = Auth::id();
-    if ($request->hasFile('image')) {
-        $plant->image = $request->file('image')->store('plants');
+        // Create a new plant record
+        $plant = new Plant($request->all());
+        $plant->user_id = Auth::id();
+
+        // Handle image upload if it exists
+        if ($request->hasFile('image')) {
+            $destinationPath = public_path('uploads/plants');
+            $fileName = time() . '_' . $request->file('image')->getClientOriginalName();
+            $request->file('image')->move($destinationPath, $fileName);
+            $plant->image = 'uploads/plants/' . $fileName;
+        }
+
+        $plant->save();
+
+        return redirect()->route('plants.index')->with('success', 'Plant added successfully!');
     }
-    $plant->save();
-
-    return redirect()->route('plants.index')->with('success', 'Plant added successfully!');
-}
 
     public function show(Plant $plant)
     {
-        $plants = Plant::where('user_id', Auth::id())->first();
         return view('plants.show', compact('plant'));
     }
 
     public function edit(Plant $plant)
     {
-        $plants = Plant::where('user_id', Auth::id())->first();
         return view('plants.edit', compact('plant'));
     }
 
@@ -57,13 +61,26 @@ class PlantController extends Controller
             'name' => 'required|string|max:255',
             'type' => 'required|string|max:255',
             'care_instructions' => 'required|string',
-            'image' => 'nullable|image',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:10048',
         ]);
 
-        $plant->fill($request->all());
+        // Update plant details
+        $plant->fill($request->except(['image']));
+
+        // Handle the uploaded image
         if ($request->hasFile('image')) {
-            $plant->image = $request->file('image')->store('plants');
+            // Delete old image if it exists
+            if ($plant->image && file_exists(public_path($plant->image))) {
+                unlink(public_path($plant->image));
+            }
+
+            // Store the new image
+            $destinationPath = public_path('uploads/plants');
+            $fileName = time() . '_' . $request->file('image')->getClientOriginalName();
+            $request->file('image')->move($destinationPath, $fileName);
+            $plant->image = 'uploads/plants/' . $fileName;
         }
+
         $plant->save();
 
         return redirect()->route('plants.index')->with('success', 'Plant updated successfully!');
@@ -71,7 +88,13 @@ class PlantController extends Controller
 
     public function destroy(Plant $plant)
     {
+        // Delete the plant image if it exists
+        if ($plant->image && file_exists(public_path($plant->image))) {
+            unlink(public_path($plant->image));
+        }
+        // Delete the plant
         $plant->delete();
+
         return redirect()->route('plants.index')->with('success', 'Plant deleted successfully!');
     }
 }

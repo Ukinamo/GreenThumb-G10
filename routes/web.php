@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/journal', [JournalController::class, 'store'])->name('journals.store');
     Route::get('/journal/{journal}', [JournalController::class, 'show'])->name('journals.show');
     Route::get('/journal/{journal}/edit', [JournalController::class, 'edit'])->name('journals.edit');
-    Route::post('/journal/{journal}', [JournalController::class, 'update'])->name('journals.update');
+    Route::put('/journal/{journal}', [JournalController::class, 'update'])->name('journals.update');
     Route::delete('/journal/{journal}', [JournalController::class, 'destroy'])->name('journals.destroy');
 });
 

@@ -10,7 +10,7 @@
         body {
             background-color: #f9fafb;
             font-family: 'Arial', sans-serif;
-            color: #388e3c; /* Green text color */
+            color: #388e3c;
         }
 
         .container {
@@ -28,7 +28,7 @@
 
         h1 {
             font-size: 2.4rem;
-            color: #388e3c; /* Green for heading */
+            color: #388e3c;
             text-align: center;
             margin-bottom: 30px;
             font-weight: 600;
@@ -44,11 +44,11 @@
             font-size: 1rem;
             background-color: #f1f3f5;
             border: 1px solid #ccc;
-            color: #388e3c; /* Green text color for form inputs */
+            color: #388e3c;
         }
 
         .form-control:focus {
-            border-color: #388e3c; /* Green focus border */
+            border-color: #388e3c;
             box-shadow: 0 0 8px rgba(56, 142, 60, 0.5);
         }
 
@@ -67,7 +67,7 @@
         }
 
         .btn-primary:hover {
-            background-color: #2c6e49; /* Darker green */
+            background-color: #2c6e49;
             border-color: #2c6e49;
             box-shadow: 0 0 10px rgba(56, 142, 60, 0.3);
         }

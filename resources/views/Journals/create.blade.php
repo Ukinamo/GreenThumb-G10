@@ -8,8 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #f9fafb;
             font-family: 'Arial', sans-serif;
+            color: #333;
         }
 
         .container {
@@ -20,15 +21,16 @@
         .card {
             background-color: #ffffff;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             padding: 40px;
         }
 
         h1 {
-            font-size: 2.2rem;
-            color: #4CAF50;
+            font-size: 2.5rem;
+            color: #4CAF50; /* Green */
             text-align: center;
             margin-bottom: 30px;
+            font-weight: 600;
         }
 
         .form-group {
@@ -49,25 +51,27 @@
         }
 
         .btn {
-            border-radius: 5px;
+            border-radius: 8px;
             padding: 12px 20px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
+            text-transform: uppercase;
         }
 
         .btn-primary {
-            background-color: #28a745;
-            border-color: #28a745;
+            background-color: #4CAF50;
+            border-color: #4CAF50;
         }
 
         .btn-primary:hover {
-            background-color: #218838;
-            border-color: #1e7e34;
+            background-color: #45a049;
+            border-color: #45a049;
         }
 
         .btn-secondary {
             background-color: #3498db;
             border-color: #3498db;
+            color: white;
         }
 
         .btn-secondary:hover {
@@ -77,13 +81,28 @@
 
         .form-group label {
             font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
+            color: #388e3c;
+            margin-bottom: 8px;
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 150px;
+        }
+
+        .form-group input[type="file"] {
+            padding: 10px;
+            background-color: #f1f3f5;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .form-group input[type="file"]:focus {
+            border-color: #28a745;
+        }
+
+        select.form-control {
+            background-color: #f1f3f5;
         }
 
         .text-center {
@@ -91,12 +110,22 @@
         }
 
         .text-center a {
-            margin-left: 10px;
+            margin-left: 15px;
         }
 
-        /* Style for select elements */
-        select.form-control {
-            background-color: #f1f3f5;
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                font-size: 1rem;
+                padding: 12px 18px;
+            }
         }
     </style>
 </head>

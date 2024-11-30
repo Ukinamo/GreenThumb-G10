@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlantController;
 use App\Http\Controllers\JournalController;
+use App\Http\Controllers\CommunityController;
 
 Route::get('/', function () {
     return view('auth.signup');
@@ -39,5 +40,13 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/journal/{journal}/edit', [JournalController::class, 'edit'])->name('journals.edit');
     Route::put('/journal/{journal}', [JournalController::class, 'update'])->name('journals.update');
     Route::delete('/journal/{journal}', [JournalController::class, 'destroy'])->name('journals.destroy');
+});
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('/community', [CommunityController::class, 'index'])->name('community.index');
+    Route::get('/community/create', [CommunityController::class, 'create'])->name('community.create');
+    Route::post('/community', [CommunityController::class, 'store'])->name('community.store');
+    Route::get('/community/{question}', [CommunityController::class, 'show'])->name('community.show');
+    Route::post('/community/{question}/answer', [CommunityController::class, 'answer'])->name('community.answer');
 });
 

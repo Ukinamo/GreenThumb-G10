@@ -34,4 +34,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Journal::class);
     }
+
+    public function Question()
+    {
+        return $this->hasMany(Question::class);
+    }
+
+    public function Answer()
+    {
+        return $this->hasMany(Answer::class);
+    }
 }

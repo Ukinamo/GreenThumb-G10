@@ -7,43 +7,54 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f4f7fc;
+            background-color: #f9fafb;
             font-family: 'Arial', sans-serif;
+            color: #333;
         }
 
         .container {
             max-width: 800px;
-            margin-top: 50px;
+            margin-top: 60px;
         }
 
         .card {
             background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
         }
 
         h2 {
-            font-size: 2rem;
-            color: #4CAF50;
-            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: #4CAF50; /* Green */
+            margin-bottom: 35px;
             text-align: center;
+            font-weight: 600;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .form-control {
             border-radius: 10px;
             padding: 15px;
             font-size: 1rem;
+            background-color: #f1f3f5;
+            border: 1px solid #ddd;
+        }
+
+        .form-control:focus {
+            border-color: #4CAF50; /* Green */
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
         }
 
         .btn {
-            border-radius: 5px;
+            border-radius: 8px;
             padding: 12px 20px;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
         }
 
         .btn-primary {
@@ -54,37 +65,74 @@
         .btn-primary:hover {
             background-color: #45a049;
             border-color: #45a049;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
         }
 
         .btn-secondary {
             background-color: #3498db;
             border-color: #3498db;
+            color: white;
         }
 
         .btn-secondary:hover {
             background-color: #2980b9;
             border-color: #2980b9;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
         }
 
         .img-thumbnail {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             object-fit: cover;
-            margin-top: 10px;
+            margin-top: 15px;
+            border-radius: 10px;
         }
 
         .form-group label {
             font-weight: bold;
-            color: #333;
+            color: #4CAF50; /* Green for labels */
+            margin-bottom: 8px;
         }
 
         .d-flex {
-            gap: 10px;
+            gap: 15px;
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 150px;
+        }
+
+        .form-group input[type="file"] {
+            padding: 12px;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .form-group input[type="file"]:focus {
+            border-color: #4CAF50;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                font-size: 1rem;
+                padding: 12px 18px;
+            }
+
+            .img-thumbnail {
+                width: 150px;
+                height: 150px;
+            }
         }
     </style>
 </head>

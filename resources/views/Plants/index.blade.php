@@ -4,25 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Plants</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f4f7fc;
-            font-family: 'Arial', sans-serif;
-            color: #333;
+            background-color: #f4f9f4;
+            color: #2c6e49;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
         }
 
-        .container {
-            max-width: 1200px;
-            margin-top: 50px;
+        .navbar {
+            background-color: #388e3c;
+            border-bottom: 4px solid #1b5e20;
+        }
+
+        .navbar .btn-dark {
+            background-color: #2e7d32;
+            border: none;
+        }
+
+        .navbar .btn-dark:hover {
+            background-color: #1b5e20;
         }
 
         h2 {
             text-align: center;
             font-size: 2.5rem;
-            color: #4CAF50;
+            color: #388e3c;
             margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin-top: 50px;
         }
 
         .card-container {
@@ -32,12 +47,12 @@
         }
 
         .plant-card {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #e8f5e9;
             border-radius: 12px;
             overflow: hidden;
-            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #e0e0e0;
+            border: 1px solid #c8e6c9;
         }
 
         .plant-card:hover {
@@ -49,7 +64,7 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-bottom: 2px solid #ddd;
+            border-bottom: 2px solid #388e3c;
         }
 
         .plant-card-body {
@@ -58,42 +73,36 @@
         }
 
         .plant-card-title {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: bold;
+            color: #2c6e49;
             margin-bottom: 15px;
-            color: #2c3e50;
         }
 
-        .plant-card-text {
-            color: #7f8c8d;
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
-
-        .plant-card-actions a, .plant-card-actions button {
-            margin-right: 10px;
+        .btn {
+            margin: 5px;
             padding: 8px 16px;
             border-radius: 5px;
         }
 
         .btn-info {
-            background-color: #3498db;
+            background-color: #81c784;
             color: white;
             border: none;
         }
 
         .btn-info:hover {
-            background-color: #2980b9;
+            background-color: #4caf50;
         }
 
         .btn-warning {
-            background-color: #f39c12;
+            background-color: #fbc02d;
             color: white;
             border: none;
         }
 
         .btn-warning:hover {
-            background-color: #e67e22;
+            background-color: #f9a825;
         }
 
         .btn-danger {
@@ -106,10 +115,6 @@
             background-color: #c0392b;
         }
 
-        .mt-4 a {
-            margin-right: 15px;
-        }
-
         .footer {
             text-align: center;
             padding: 15px 0;
@@ -117,24 +122,39 @@
             margin-top: 40px;
         }
 
-        .footer a {
-            color: #34495e;
-            text-decoration: none;
-            font-weight: bold;
+        .footer p {
+            font-size: 1rem;
+            color: #2c6e49;
         }
 
-        .footer a:hover {
-            text-decoration: underline;
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <a href="{{ route('dashboard') }}" class="btn btn-dark">Back to Dashboard</a>
+        </div>
+    </nav>
+
     <div class="container">
         <h2>My Green Sanctuary</h2>
         <div class="card-container">
             @foreach ($plants as $plant)
                 <div class="plant-card">
-                    <!-- Display plant image or placeholder -->
                     @if ($plant->image)
                         <img src="{{ asset($plant->image) }}" alt="{{ $plant->name }}">
                     @else
@@ -142,7 +162,7 @@
                     @endif
                     <div class="plant-card-body">
                         <h5 class="plant-card-title">{{ $plant->name }}</h5>
-                        <div class="plant-card-actions">
+                        <div>
                             <a href="{{ route('plants.show', $plant->id) }}" class="btn btn-info btn-sm">View</a>
                             <a href="{{ route('plants.edit', $plant->id) }}" class="btn btn-warning btn-sm">Edit</a>
                             <form action="{{ route('plants.destroy', $plant->id) }}" method="POST" style="display:inline;">
@@ -156,9 +176,8 @@
             @endforeach
         </div>
 
-        <div class="mt-4">
-            <a href="{{ route('plants.create') }}" class="btn btn-primary">Add New Plant</a>
-            <a href="{{ route('dashboard') }}" class="btn btn-secondary">Go Back</a>
+        <div class="mt-4 text-center">
+            <a href="{{ route('plants.create') }}" class="btn btn-primary" style="background-color: #388e3c; border: none;">Add New Plant</a>
         </div>
     </div>
 

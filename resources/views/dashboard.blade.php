@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plant Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             background-color: #f4f9f4;
@@ -28,7 +29,7 @@
         }
 
         .dropdown-menu {
-            max-height: 300px;
+            max-height: 400px;
             overflow-y: auto;
             background-color: #a5d6a7;
             border: 1px solid #81c784;
@@ -53,7 +54,7 @@
 
         .content {
             padding: 30px;
-            margin: 30px auto;
+            margin: 100px auto 30px;
             background-color: #e8f5e9;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -135,14 +136,23 @@
             background-color: #81c784;
         }
 
+        .stat-item i {
+            font-size: 2rem;
+            color: #2c6e49;
+            margin-bottom: 10px;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
-            color: #2c6e49;
+            padding: 20px 0;
+            background-color: #388e3c;
+            color: #fff;
         }
 
         footer p {
             font-size: 1rem;
+            margin: 0;
         }
 
         /* Responsive Design */
@@ -167,11 +177,11 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" href="{{ route('profile.show') }}">Profile</a></li>
-                    <li><a class="dropdown-item" href="{{ route('plants.index') }}">Plants</a></li>
-                    <li><a class="dropdown-item" href="{{ route('journals.index') }}">Journals</a></li>
-                    <li><a class="dropdown-item" href="#">More Options</a></li>
-                    <li><a class="dropdown-item" href="#">Extra Option</a></li>
+                    <li><a class="dropdown-item" href="{{ route('profile.show') }}"><i class="fas fa-user"></i> Profile</a></li>
+                    <li><a class="dropdown-item" href="{{ route('plants.index') }}"><i class="fas fa-leaf"></i> Plants</a></li>
+                    <li><a class="dropdown-item" href="{{ route('journals.index') }}"><i class="fas fa-book"></i> Journals</a></li>
+                    <li><a class="dropdown-item" href="{{ route('community.index') }}"><i class="fas fa-comments"></i> Community Q&A</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-plus"></i> Extra Option</a></li>
                     <li>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
@@ -186,15 +196,17 @@
     <div class="container content">
         <div class="dashboard-header">
             <h1>Welcome to GreenThumb</h1>
-            <p>GreenThumb is a comprehensive system designed to help you manage your plants, track their growth, and keep detailed journals of your gardening journey. From tracking the health of your plants to keeping a record of your watering schedules and growth insights, GreenThumb makes it easy for you to stay connected with nature and cultivate a flourishing garden.</p>
+            <p>Manage your plants and journals effortlessly, track growth progress, and connect with other gardeners. Let's make gardening fun and fruitful!</p>
         </div>
 
         <div class="stats">
             <div class="stat-item">
+                <i class="fas fa-seedling"></i>
                 <h2>{{ $plantsCount }}</h2>
                 <p>Plants</p>
             </div>
             <div class="stat-item">
+                <i class="fas fa-book"></i>
                 <h2>{{ $journalsCount }}</h2>
                 <p>Journals</p>
             </div>

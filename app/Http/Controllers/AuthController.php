@@ -38,7 +38,7 @@ class AuthController extends Controller
         }
 
         // If login fails, return back with error message
-        return back()->withErrors(['email' => 'Invalid credentials'])->withInput();
+        return back()->withErrors(['email', 'password' => 'Invalid credentials'])->withInput();
     }
 
     // Handle the signup process

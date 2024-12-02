@@ -78,7 +78,7 @@ class AuthController extends Controller
         // Assuming you have a 'user_id' field in the plants table to relate plants to users
         $plantsCount = Plant::where('user_id', Auth::id())->count(); 
         $journalsCount = Journal::where('user_id', Auth::id())->count(); 
-        $plants = Plant::where('user_id', Auth::id())->oldest()->take(3)->get();  // Fetch the latest 3 plants for the overview
+        $plants = Plant::where('user_id', Auth::id())->latest()->take(3)->get();  // Fetch the latest 3 plants for the overview
     
         // Pass the data to the dashboard view
         return view('dashboard', compact('plantsCount', 'journalsCount', 'plants'));

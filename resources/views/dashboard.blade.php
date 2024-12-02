@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        /* General Styles */
         body {
             background-color: #f4f9f4;
             color: #2c6e49;
@@ -14,44 +15,78 @@
             line-height: 1.6;
         }
 
+        /* Navbar Styles */
         .navbar {
-            background-color: #388e3c;
+            background: linear-gradient(90deg, #388e3c, #2e7d32, #1b5e20);
             border-bottom: 4px solid #1b5e20;
+            padding: 10px 20px;
         }
 
         .navbar .btn-dark {
-            background-color: #2e7d32;
-            border: none;
+            background-color: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            padding: 8px 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
 
         .navbar .btn-dark:hover {
-            background-color: #1b5e20;
+            background-color: #ffffff;
+            color: #388e3c;
         }
 
         .dropdown-menu {
             max-height: 400px;
             overflow-y: auto;
-            background-color: #a5d6a7;
+            background-color: #e8f5e9;
             border: 1px solid #81c784;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .dropdown-item {
-            color: #2e7d32;
+            color: #2c6e49;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
 
-        .dropdown-item:hover {
+        .dropdown-item:hover,
+        .dropdown-item:focus {
             background-color: #81c784;
+            color: #ffffff;
         }
 
+        /* Highlight the Tips item */
+        .dropdown-item[href*="tips"] {
+            background-color: #4caf50;
+            color: #ffffff;
+        }
+
+        .dropdown-item[href*="tips"]:hover {
+            background-color: #388e3c;
+            color: #ffffff;
+        }
+
+        /* Logout Button */
         .btn-danger {
             background-color: #d32f2f;
             border: none;
+            color: white;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         .btn-danger:hover {
             background-color: #b71c1c;
         }
 
+        /* Dashboard Content */
         .content {
             padding: 30px;
             margin: 100px auto 30px;
@@ -78,39 +113,6 @@
             line-height: 1.5;
             max-width: 800px;
             margin: 0 auto;
-        }
-
-        .card {
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .card img {
-            border-radius: 12px 12px 0 0;
-            max-height: 220px;
-            object-fit: cover;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        .card-title {
-            font-size: 1.4rem;
-            color: #2c6e49;
-            font-weight: bold;
-        }
-
-        .card-text {
-            color: #388e3c;
-            font-size: 1rem;
         }
 
         .stats {
@@ -154,19 +156,6 @@
             font-size: 1rem;
             margin: 0;
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .stats {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .stat-item {
-                width: 100%;
-                margin-bottom: 15px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -181,11 +170,11 @@
                     <li><a class="dropdown-item" href="{{ route('plants.index') }}"><i class="fas fa-leaf"></i> Plants</a></li>
                     <li><a class="dropdown-item" href="{{ route('journals.index') }}"><i class="fas fa-book"></i> Journals</a></li>
                     <li><a class="dropdown-item" href="{{ route('community.index') }}"><i class="fas fa-comments"></i> Community Q&A</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fas fa-plus"></i> Extra Option</a></li>
+                    <li><a class="dropdown-item" href="{{ route('tips.index') }}"><i class="fas fa-lightbulb"></i> Tips</a></li>
                     <li>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-danger w-100 mt-2">Logout</button>
+                            <button type="submit" class="btn btn-danger mt-2">Logout</button>
                         </form>
                     </li>
                 </ul>

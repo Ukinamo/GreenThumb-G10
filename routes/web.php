@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlantController;
 use App\Http\Controllers\JournalController;
 use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\TipController;
 
 Route::get('/', function () {
     return view('auth.signup');
@@ -50,3 +51,8 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/community/{question}/answer', [CommunityController::class, 'answer'])->name('community.answer');
 });
 
+Route::middleware(['auth'])->group(function(){
+    Route::get('/tip', [TipController::class, 'index'])->name('tips.index');
+    Route::get('/tip/create', [TipController::class, 'create'])->name('tips.create');
+    Route::post('/tip', [TipController::class, 'store'])->name('tips.store');
+});

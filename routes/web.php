@@ -8,7 +8,7 @@ use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\TipController;
 
 Route::get('/', function () {
-    return view('auth.signup');
+    return view('auth.login');
 });
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

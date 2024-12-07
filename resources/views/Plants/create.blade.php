@@ -44,7 +44,7 @@
             font-size: 1rem;
             background-color: #f1f3f5;
             border: 1px solid #ccc;
-            color: #388e3c;
+            color: #388e3c; /* Ensure consistent text color for all inputs */
         }
 
         .form-control:focus {

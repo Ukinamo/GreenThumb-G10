@@ -69,6 +69,21 @@
             color: #ffffff;
         }
 
+        /* About Item Styling */
+        .dropdown-item i {
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-item:hover i {
+            transform: scale(1.2);
+        }
+
+        .dropdown-item[href="#"]:hover {
+            background-color: #4caf50;
+            color: white;
+        }
+
         /* Logout Button */
         .btn-danger {
             background-color: #d32f2f;
@@ -171,6 +186,7 @@
                     <li><a class="dropdown-item" href="{{ route('journals.index') }}"><i class="fas fa-book"></i> Journals</a></li>
                     <li><a class="dropdown-item" href="{{ route('community.index') }}"><i class="fas fa-comments"></i> Community Q&A</a></li>
                     <li><a class="dropdown-item" href="{{ route('tips.index') }}"><i class="fas fa-lightbulb"></i> Tips</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-info-circle"></i> About</a></li>
                     <li>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf

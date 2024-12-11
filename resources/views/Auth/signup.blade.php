@@ -121,6 +121,27 @@
         .container p a:hover {
             text-decoration: underline;
         }
+        .alert {
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #ffffff;
+        font-weight: bold;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .alert-danger {
+        background-color: rgba(255, 0, 0, 0.5);
+        border-color: rgba(255, 0, 0, 0.8);
+        }
+
+        .alert-success {
+        background-color: rgba(0, 128, 0, 0.5);
+        border-color: rgba(0, 128, 0, 0.8);
+        }
     </style>
 </head>
 <body>

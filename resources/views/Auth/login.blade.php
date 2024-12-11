@@ -172,11 +172,55 @@
             border-bottom: 2px solid #ffffff;
             transform: rotate(-45deg);
         }
+        .alert {
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.alert-danger {
+    background-color: rgba(255, 0, 0, 0.5);
+    border-color: rgba(255, 0, 0, 0.8);
+}
+
+.alert-success {
+    background-color: rgba(0, 128, 0, 0.5);
+    border-color: rgba(0, 128, 0, 0.8);
+}
+
+.container .alert {
+    margin-top: 15px;
+}
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Login</h1>
+
+<div class="container">
+<h1>Login</h1>
+<!-- Display validation errors -->
+@if ($errors->any())
+    <div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+    </div>
+@endif
+
+<!-- Display success message -->
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+
         <form action="{{ route('login') }}" method="POST">
             @csrf
             <label for="email">Email:</label>

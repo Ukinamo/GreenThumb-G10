@@ -8,13 +8,14 @@ use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\TipController;
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('auth.signup');
 });
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/signup', [AuthController::class, 'showSignupForm'])->name('signup');
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+Route::get('/about', [AuthController::class, 'about'])->name('about')->middleware('auth');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {

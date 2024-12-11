@@ -91,4 +91,9 @@ class AuthController extends Controller
         Auth::logout();  // Log the user out
         return redirect()->route('login');  // Redirect to login page
     }
+
+    public function about()
+    {
+        return view('about');
+    }
 }

@@ -133,7 +133,7 @@
 <body>
 
 <div class="container">
-    <h1>Welcome {{$profile->user->name}}</h1>
+    <h1>Welcome </h1>
 
     <div class="profile-card">
         <h3><i class="fas fa-user"></i> Personal Information</h3>

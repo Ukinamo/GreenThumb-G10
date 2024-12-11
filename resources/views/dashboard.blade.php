@@ -186,8 +186,7 @@
                     <li><a class="dropdown-item" href="{{ route('journals.index') }}"><i class="fas fa-book"></i> Journals</a></li>
                     <li><a class="dropdown-item" href="{{ route('community.index') }}"><i class="fas fa-comments"></i> Community Q&A</a></li>
                     <li><a class="dropdown-item" href="{{ route('tips.index') }}"><i class="fas fa-lightbulb"></i> Tips</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fas fa-info-circle"></i> About</a></li>
-                    <li>
+                    <li><a class="dropdown-item" href="{{ route('about')}}"><i class="fas fa-info-circle"></i> About</a></li>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-danger mt-2">Logout</button>
